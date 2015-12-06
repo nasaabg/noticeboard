@@ -1,0 +1,26 @@
+<h1>Permissions</h1>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Moderator permission</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td>
+            <% if user.moderator? %>
+              <%= link_to "Revoke permission", revoke_permissions_path({user_id: user.id}), method: :post, class: "btn btn-danger" %>
+            <% else %>
+              <%= link_to "Add permission", permissions_path({user_id: user.id}), method: :post, class: "btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

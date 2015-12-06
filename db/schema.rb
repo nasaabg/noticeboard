@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206212723) do
+ActiveRecord::Schema.define(version: 20151206222520) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 20151206212723) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean  "admin",                  default: false
+    t.boolean  "moderator",              default: false
+    t.boolean  "baned",                  default: false
+    t.boolean  "banned",                 default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
