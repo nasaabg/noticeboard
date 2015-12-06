@@ -6,6 +6,11 @@ Rails.application.routes.draw do
       post 'revoke'
     end
   end
+  resources :banns, only: [:index, :create] do
+    collection do
+      post 'revoke'
+    end
+  end
   # resources :products
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,26 @@
+<h1>Banns</h1>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Banns</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td>
+            <% if user.banned? %>
+              <%= link_to "Revoke ban", revoke_banns_path({user_id: user.id}), method: :post, class: "btn btn-success" %>
+            <% else %>
+              <%= link_to "Ban!", banns_path({user_id: user.id}), method: :post, class: "btn btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
