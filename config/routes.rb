@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root 'products#index'
+  root 'welcome#index'
+
   resources :permissions, only: [:index, :create] do
     collection do
       post 'revoke'
