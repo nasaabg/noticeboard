@@ -21,6 +21,9 @@
        <% if current_user.try(:admin) %>
         <%= link_to "Banns", banns_path, class: "navbar-text" %>
       <% end %>
+      <% if current_user.try(:admin) %>
+        <%= link_to "Admin Panel", products_path, class: "navbar-text" %>
+      <% end %>
 
       <% if user_signed_in? %>
         <p class="navbar-text navbar-right">
