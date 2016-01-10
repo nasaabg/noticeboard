@@ -8,6 +8,11 @@
     width: 100%;
 }
 
+.portfolio-item {
+    margin-bottom: 25px;
+}
+
+
 .carousel-holder {
     margin-bottom: 30px;
 }
