@@ -13,7 +13,12 @@ Rails.application.routes.draw do
       post 'revoke'
     end
   end
-  resources :products
+  resources :products do
+    collection do
+      get 'my_products'
+    end
+
+  end
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
