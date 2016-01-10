@@ -8,9 +8,11 @@
 
 
 Product.delete_all
-Product.create(id: 1, name: "Product1", description: "See more snippets like this online store item at Bootsnipp - http://bootsnipp.com.")
-Product.create(id: 2, name: "Product2", description: "See more snippets like this online store item at Bootsnipp - http://bootsnipp.com.")
-Product.create(id: 3, name: "Product3", description: "See more snippets like this online store item at Bootsnipp - http://bootsnipp.com.")
+Category.delete_all
+
+Product.create(id: 1, name: "Apple Iphone", price: Faker::Commerce.price, description: Faker::Lorem.paragraph(2, false, 10))
+Product.create(id: 2, name: "Apple Macbook", price: Faker::Commerce.price, description: Faker::Lorem.paragraph(2, false, 10))
+Product.create(id: 3, name: "Harry Potter", price: Faker::Commerce.price, description: Faker::Lorem.paragraph(2, false, 10))
 puts "PRODUCTS CREATED"
 
 Category.create(name: "Category1")
