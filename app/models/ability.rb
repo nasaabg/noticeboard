@@ -2,12 +2,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user.admin?
+    if user && user.admin?
         can :manage, :all
-    else
+    elsif user
         can :manage, Product, user_id: user.id
         can :read, Category
         can :read, Product
+    else
+        can :read, Category
+        can :read, Product 
     end
 
     # Define abilities for the passed in user here. For example:
