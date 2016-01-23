@@ -1,4 +1,7 @@
-FactoryGirl.define do 
+FactoryGirl.define do  factory :point do
+    value 1
+  end
+ 
   
   factory :user do
     email Faker::Internet.free_email

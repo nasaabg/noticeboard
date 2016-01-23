@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :products
+  has_many :points
   
   def active_for_authentication?
     super && !self.banned?

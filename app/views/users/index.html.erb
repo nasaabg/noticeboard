@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <ul class="list-group">
+      <% @users.each_with_index do |user, index| %>
+        <li class="list-group-item">
+          <span class="badge"><%= user.points.count %></span>
+          <strong>#<%= index+1 %></strong> <%= user.email %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
