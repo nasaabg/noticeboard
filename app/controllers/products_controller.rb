@@ -16,10 +16,14 @@ class ProductsController < ApplicationController
 
   def send_question
     owner = @product.user
-    if UserMailer.question_email(owner.email, params[:email], params[:message], @product).deliver_now
-      flash[:notice] = "Question sent!"
+    if params[:email].empty? || params[:message].empty?
+      flash[:error] = "Type your email and message. Fields cannot be empty."
     else
-      flash[:error] = "Something went wrong. Try again!"
+      if UserMailer.question_email(owner.email, params[:email], params[:message], @product).deliver_now
+        flash[:notice] = "Question sent!"
+      else
+        flash[:error] = "Something went wrong. Try again!"
+      end
     end
     redirect_to @product
   end
