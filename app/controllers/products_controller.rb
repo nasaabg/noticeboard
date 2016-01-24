@@ -18,6 +18,8 @@ class ProductsController < ApplicationController
     owner = @product.user
     if params[:email].empty? || params[:message].empty?
       flash[:error] = "Type your email and message. Fields cannot be empty."
+    elsif params[:email] == owner.email
+      flash[:error] = "You cannot send email to yourself."
     else
       if UserMailer.question_email(owner.email, params[:email], params[:message], @product).deliver_now
         flash[:notice] = "Question sent!"
