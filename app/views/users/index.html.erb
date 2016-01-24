@@ -4,15 +4,16 @@
       <% @users.each_with_index do |user, index| %>
         <li class="list-group-item">
           <span class="badge"><%= user.received_points.count %> 
-          
-          <% if user.id != current_user.id %>
-            <% if @rewarded_users_ids.include?(user.id) %>
-             <%= link_to remove_point_users_path(user_id: user), class: "white", method: :post do %>
-              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-             <% end %>
-            <% else %>
-              <%= link_to add_point_users_path(user_id: user), class: "white", method: :post do %>
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <% if current_user %>
+            <% if user.id != current_user.id %>
+              <% if @rewarded_users_ids.include?(user.id) %>
+               <%= link_to remove_point_users_path(user_id: user), class: "white", method: :post do %>
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+               <% end %>
+              <% else %>
+                <%= link_to add_point_users_path(user_id: user), class: "white", method: :post do %>
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>

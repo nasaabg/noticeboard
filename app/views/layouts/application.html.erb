@@ -32,14 +32,14 @@
         <p class="navbar-text navbar-right">
           <%= link_to "My Products", my_products_products_path %>       
         </p>
-        <p class="navbar-text navbar-right">
-          <%= link_to "Ranking", users_path %>       
-        </p>
       <% else %>
         <p class="navbar-text navbar-right">
         <%= link_to('Login', new_user_session_path)  %> or <%= link_to "Sign up", new_user_registration_path %> 
         </p>
       <% end %>
+      <p class="navbar-text navbar-right">
+          <%= link_to "Ranking", users_path %>       
+        </p>
     </div>
   </div>
 </nav>

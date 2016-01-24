@@ -10,7 +10,8 @@ class Ability
         can :read, Product
     else
         can :read, Category
-        can :read, Product 
+        can :read, Product
+        can :send_question, Product
     end
 
     # Define abilities for the passed in user here. For example:

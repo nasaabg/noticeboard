@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:add_point, :remove_point]
   def index
-    @rewarded_users_ids = current_user.given_points.map { |p| p.receiver.id }
+    @rewarded_users_ids = current_user ? current_user.given_points.map { |p| p.receiver.id } : []
     @users = User.all.sort { |u1, u2| u2.received_points.count <=> u1.received_points.count }
   end
 
