@@ -13,12 +13,16 @@ Rails.application.routes.draw do
       post 'revoke'
     end
   end
+  
   resources :products do
+    member do
+      post "send_question"
+    end
     collection do
       get 'my_products'
     end
-
   end
+
   devise_for :users
 
   scope "/rank" do

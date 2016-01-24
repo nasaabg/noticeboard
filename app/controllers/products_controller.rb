@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :question]
   before_action :check_permission!, only: [:index]
   
   load_and_authorize_resource
@@ -12,6 +12,16 @@ class ProductsController < ApplicationController
 
   def my_products
     @products = current_user.products
+  end
+
+  def send_question
+    owner = @product.user
+    if UserMailer.question_email(owner.email, params[:email], params[:message], @product).deliver_now
+      flash[:notice] = "Question sent!"
+    else
+      flash[:error] = "Something went wrong. Try again!"
+    end
+    redirect_to @product
   end
 
   # GET /products/1
