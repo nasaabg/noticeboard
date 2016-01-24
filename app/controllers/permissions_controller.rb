@@ -8,7 +8,7 @@ class PermissionsController < ApplicationController
 
   def create
     user = User.find(params[:user_id])
-    if user.update(moderator: true)
+    if user.update(admin: true)
       flash[:notice] = "Successfully added permission"
     else
       flash[:notice] = "Something went wrong. Try again."
@@ -18,7 +18,7 @@ class PermissionsController < ApplicationController
 
   def revoke
     user = User.find(params[:user_id])
-    if user.update(moderator: false)
+    if user.update(admin: false)
       flash[:notice] = "Successfully removed permission"
     else
       flash[:notice] = "Something went wrong. Try again."
