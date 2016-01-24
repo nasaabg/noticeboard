@@ -22,7 +22,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   scope "/rank" do
-    resources :users, only: [:index]
+    resources :users, only: [:index] do
+      collection do
+        post "add_point" => 'users#add_point'
+        post "remove_point" => 'users#remove_point'
+      end
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
