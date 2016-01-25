@@ -1,10 +1,6 @@
-FactoryGirl.define do  factory :point do
-    value 1
-  end
- 
-  
+FactoryGirl.define do    
   factory :user do
-    email Faker::Internet.free_email
+    sequence(:email) { |n| "#{n}#{Faker::Internet.email}" }
     password "123456789"
     password_confirmation "123456789"
     confirmed_at Date.today
