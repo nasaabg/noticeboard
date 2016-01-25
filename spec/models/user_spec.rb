@@ -48,7 +48,7 @@ describe User do
     let(:receiver1) { create(:user) }
     let(:receiver2) { create(:user) }
 
-    it "has some received points" do
+    it "has some given points" do
       Point.create(receiver: receiver1, rewarder: user)
       Point.create(receiver: receiver2, rewarder: user)
       user.save
